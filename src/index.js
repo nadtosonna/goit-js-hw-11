@@ -15,8 +15,6 @@ let lightbox = new SimpleLightbox('.gallery a',
     {
         overlayOpacity: 1,
         captionDelay: 250,
-        captionPosition: 'bottom',
-        captionData: 'alt',
         nav: true,
         widthRatio: 1,
         heightRatio: 1

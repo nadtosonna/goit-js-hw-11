@@ -13,6 +13,7 @@ body {
 }
 .search-pannel {
     position: sticky;
+    z-index: 22;
     top: 0;
     width: 100%;
     padding: 30px;
@@ -44,6 +45,10 @@ button {
     cursor: pointer;
     outline: none;
 }
+button:hover {
+    font-size: 26px;
+    font-weight: 700;
+}
 .search-form__btn-search {
     margin-left: 30px;
 }
@@ -53,6 +58,63 @@ button {
 }
 .info {
     display: flex;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.info-item:not(:last-child) {
+    margin-right: 10px;
+}
+.info-item {
+    position: relative;
+}
+.info-item.likes::before {
+    position: absolute;
+    top: -40px;
+    right: 5px;
+    content: '';
+    background-image: url('../images/like.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+}
+.info-item.comments::before {
+        position: absolute;
+        top: -40px;
+        right: 50px;
+        content: '';
+        background-image: url('../images/comment.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        filter: hue-rotate(90deg);
+        width: 30px;
+        height: 30px;
+}
+.info-item.views::before {
+    position: absolute;
+    top: -40px;
+    right: 20px;
+    content: '';
+    background-image: url('../images/view.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: hue-rotate(90deg);
+    width: 30px;
+    height: 30px;
+}
+.info-item.downloads::before {
+    position: absolute;
+    top: -40px;
+    right: 40px;
+    content: '';
+    background-image: url('../images/download.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: hue-rotate(90deg);
+    width: 30px;
+    height: 30px;
 }
 a {
     text-decoration: none;
