@@ -13,7 +13,7 @@ const refs = {
 
 let lightbox = new SimpleLightbox('.gallery a',
     {
-        overlayOpacity: 0.9,
+        overlayOpacity: 1,
         captionDelay: 250,
         captionPosition: 'bottom',
         captionData: 'alt',
