@@ -37,7 +37,7 @@ body {
     margin-left: 30px;
 }
 button {
-    width: 180px;
+    width: 220px;
     height: 60px;
     background-color: var(--accent-color);
     color: var(--main-color);
@@ -59,6 +59,8 @@ button:hover {
 .info {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
@@ -71,7 +73,7 @@ button:hover {
 }
 .info-item.likes::before {
     position: absolute;
-    top: -40px;
+    top: -30px;
     right: 5px;
     content: '';
     background-image: url('../images/like.svg');
@@ -82,8 +84,8 @@ button:hover {
 }
 .info-item.comments::before {
         position: absolute;
-        top: -40px;
-        right: 50px;
+        top: -30px;
+        right: 30px;
         content: '';
         background-image: url('../images/comment.svg');
         background-repeat: no-repeat;
@@ -94,7 +96,7 @@ button:hover {
 }
 .info-item.views::before {
     position: absolute;
-    top: -40px;
+    top: -30px;
     right: 20px;
     content: '';
     background-image: url('../images/view.svg');
@@ -106,7 +108,7 @@ button:hover {
 }
 .info-item.downloads::before {
     position: absolute;
-    top: -40px;
+    top: -30px;
     right: 40px;
     content: '';
     background-image: url('../images/download.svg');
@@ -123,7 +125,7 @@ a {
 input {
     margin-left: auto;
     padding: 15px;
-    width: 260px;
+    width: 320px;
     border-radius: 25px;
     outline: none;
 }
