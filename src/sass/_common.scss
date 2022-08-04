@@ -1,1 +1,62 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+:root {
+    --main-color: #f9f9f9;
+    --secondary-color: #0e1d31;
+    --accent-color: #ee4865;
+}
+.container {
+    padding: 20px;
+}
+.search-pannel {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 30px;
+    background-color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+.search-form {
+    display: flex;
+    justify-content: center;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    margin-top: -30px;
+    margin-left: -30px;
+}
+.gallery__item {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+button {
+    width: 180px;
+    height: 60px;
+    background-color: var(--accent-color);
+    color: var(--main-color);
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+}
+.search-form__btn-search {
+    margin-left: 30px;
+}
+.search-form__btn-load {
+    margin-left: auto;
+    margin-right: auto;
+}
+.info {
+    display: flex;
+}
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+input {
+    margin-left: auto;
+    width: 260px;
+    border-radius: 8px;
+}
