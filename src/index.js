@@ -34,7 +34,6 @@ function onBtnClickImageSearch(event) {
 
     fetchImages(searchQuery)
         .then(response => {
-            console.log(response);
             const data = response.data;
             if (data.hits.length === 0) {
                 Notify.failure('Sorry, there are no images matching your search query. Please try again.', {
@@ -42,6 +41,9 @@ function onBtnClickImageSearch(event) {
                     width: '340px',
                 });
             } else {
+                Notify.success(`Hooray! We found ${data.total} images.`, {
+                    width: '340px',
+                });
                 let galleryListMarkup = '';
                 data.hits.map(item => {
                     galleryListMarkup += renderGalleryItem(item);

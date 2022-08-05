@@ -19,6 +19,7 @@ body {
     padding: 30px;
     background-color: var(--secondary-color);
     margin-bottom: 20px;
+    border-radius: 25px;
 }
 .search-form {
     display: flex;
@@ -35,6 +36,12 @@ body {
 .gallery__item {
     margin-top: 30px;
     margin-left: 30px;
+}
+.photo-card {
+    box-shadow: 5px 5px 20px #0e1d31;
+    border: 1px solid #0e1d31;
+    border-radius: 25px;
+    overflow: hidden;
 }
 button {
     width: 220px;
@@ -97,7 +104,7 @@ button:hover {
 .info-item.views::before {
     position: absolute;
     top: -30px;
-    right: 20px;
+    right: 15px;
     content: '';
     background-image: url('../images/view.svg');
     background-repeat: no-repeat;
@@ -109,7 +116,7 @@ button:hover {
 .info-item.downloads::before {
     position: absolute;
     top: -30px;
-    right: 40px;
+    right: 35px;
     content: '';
     background-image: url('../images/download.svg');
     background-repeat: no-repeat;
@@ -128,4 +135,8 @@ input {
     width: 320px;
     border-radius: 25px;
     outline: none;
+}
+.search-form__btn-load:disabled {
+    opacity: 0;
+    cursor: default;
 }
