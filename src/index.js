@@ -54,21 +54,10 @@ function onImageSearch(event) {
 
 function onBtnClickLoadMoreImages(event) {
     event.preventDefault();
+
     pageCount += 1;
-
     processImages();    
-    smoothScroll();
-}
-
-function smoothScroll() {
-const { height: cardHeight } = document
-  .querySelector(".gallery")
-  .firstElementChild.getBoundingClientRect();
-
-window.scrollBy({
-  top: cardHeight * 2,
-  behavior: "smooth",
-});
+    Scroll();
 }
 
 function processImages(data) {
@@ -94,4 +83,15 @@ function processImages(data) {
             position: 'center-center',
             width: '340px',
         }));
+}
+
+function Scroll() {
+const { height: cardHeight } = document
+  .querySelector(".gallery")
+  .firstElementChild.getBoundingClientRect();
+
+window.scrollBy({
+  top: cardHeight * 5,
+  behavior: "smooth",
+});
 }
