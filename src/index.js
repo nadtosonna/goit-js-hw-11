@@ -75,10 +75,6 @@ function processImages(response) {
                 });
                 refs.gallery.insertAdjacentHTML('beforeend', galleryListMarkup);
                 lightbox.refresh();
-
-                console.log(imagesShown);
-                console.log(response.data.totalHits);
-                console.log(response.data.total);
                 
                 if (response.data.hits.length > 0) refs.btnLoadMore.removeAttribute('disabled');
                 if (imagesShown >= response.data.totalHits) {
