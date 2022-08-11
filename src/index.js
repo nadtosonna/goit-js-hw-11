@@ -38,8 +38,8 @@ refs.btnLoadMore.addEventListener('click', onBtnClickLoadMoreImages);
 function onImageSearch(event) {
     event.preventDefault();
 
-    refs.gallery.innerHTML = '';
     imagesShown = 0;
+    refs.gallery.innerHTML = '';
 
     searchQuery = event.target[0].value;
 
@@ -75,12 +75,17 @@ function processImages(response) {
                 });
                 refs.gallery.insertAdjacentHTML('beforeend', galleryListMarkup);
                 lightbox.refresh();
-                console.log(imagesShown);
 
+                console.log(imagesShown);
+                console.log(response.data.totalHits);
+                console.log(response.data.total);
+                
                 if (response.data.hits.length > 0) refs.btnLoadMore.removeAttribute('disabled');
-                if (imagesShown > response.data.totalHits) {
+                if (imagesShown >= response.data.totalHits) {
                     Notify.info(`We're sorry, but you've reached the end of search results.`);
                     refs.btnLoadMore.setAttribute('disabled', true);
+                    refs.form.reset();
+                    imagesShown = 0;
                 }
             }
         }).catch(error => Notify.failure('OOPS! Something went wrong! Try again!', {
