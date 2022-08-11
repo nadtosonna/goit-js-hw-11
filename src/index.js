@@ -25,11 +25,11 @@ const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '29034983-efec06dd5286ef1d9795c8211';
 let searchQuery = '';
 let pageCount = 1;
+let imagesShown = 0;
   
 async function fetchImages(searchQuery) {
     const response = await axios.get(`${BASE_URL}?key=${KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${pageCount}`);
-    const data = await response;
-    return data;
+    return response;
 }
 
 refs.form.addEventListener('submit', onImageSearch);
@@ -48,8 +48,6 @@ function onImageSearch(event) {
     });
 
     processImages();
-
-    refs.btnLoadMore.removeAttribute('disabled');
 }
 
 function onBtnClickLoadMoreImages(event) {
@@ -57,27 +55,31 @@ function onBtnClickLoadMoreImages(event) {
 
     pageCount += 1;
     processImages();    
-    Scroll();
+    imagesScroll();
 }
 
-function processImages(data) {
+function processImages(response) {
     fetchImages(searchQuery)
-        .then(data => {
-            if (data.data.hits.length === 0) {
+        .then(response => {
+            if (response.data.hits.length === 0) {
                 Notify.failure('Sorry, there are no images matching your search query. Please try again.', {
                     position: 'center-center',
                     width: '340px',
                 });
             } else {
-                Notify.success(`Hooray! We found ${data.data.total} images.`, {
-                    width: '340px',
-                });
                 let galleryListMarkup = '';
-                data.data.hits.map(item => {
+                response.data.hits.map(item => {
                     galleryListMarkup += renderGalleryItem(item);
+                    imagesShown += 1;
                 });
                 refs.gallery.insertAdjacentHTML('beforeend', galleryListMarkup);
                 lightbox.refresh();
+                console.log(imagesShown);
+
+                if (response.data.hits.length > 0) refs.btnLoadMore.removeAttribute('disabled');
+                // if (imagesShown > response.data.totalHits) {
+                //     Notify.info(`We're sorry, but you've reached the end of search results.`);
+                // }
             }
         }).catch(error => Notify.failure('OOPS! Something went wrong! Try again!', {
             position: 'center-center',
@@ -85,13 +87,13 @@ function processImages(data) {
         }));
 }
 
-function Scroll() {
+function imagesScroll() {
 const { height: cardHeight } = document
   .querySelector(".gallery")
   .firstElementChild.getBoundingClientRect();
 
 window.scrollBy({
-  top: cardHeight * 5,
+  top: cardHeight * 10,
   behavior: "smooth",
 });
 }
