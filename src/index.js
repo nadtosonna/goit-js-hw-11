@@ -39,6 +39,7 @@ function onImageSearch(event) {
     event.preventDefault();
 
     refs.gallery.innerHTML = '';
+    imagesShown = 0;
 
     searchQuery = event.target[0].value;
 
@@ -77,9 +78,10 @@ function processImages(response) {
                 console.log(imagesShown);
 
                 if (response.data.hits.length > 0) refs.btnLoadMore.removeAttribute('disabled');
-                // if (imagesShown > response.data.totalHits) {
-                //     Notify.info(`We're sorry, but you've reached the end of search results.`);
-                // }
+                if (imagesShown > response.data.totalHits) {
+                    Notify.info(`We're sorry, but you've reached the end of search results.`);
+                    refs.btnLoadMore.setAttribute('disabled', true);
+                }
             }
         }).catch(error => Notify.failure('OOPS! Something went wrong! Try again!', {
             position: 'center-center',
